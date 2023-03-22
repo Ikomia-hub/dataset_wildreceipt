@@ -18,7 +18,7 @@
 
 from ikomia import dataprocess
 from ikomia.core.task import TaskParam
-from ikomia.core import CWorkflowTask, ParamMap
+from ikomia.core import CWorkflowTask
 from ikomia.dnn import datasetio
 import copy
 # Your imports below
@@ -37,15 +37,15 @@ class DatasetWildreceiptParam(TaskParam):
         # Place default value initialization here
         self.dataset_folder = ""
 
-    def setParamMap(self, param_map):
+    def set_values(self, param_map):
         # Set parameters values from Ikomia application
         # Parameters values are stored as string and accessible like a python dict
         self.dataset_folder = param_map["dataset_folder"]
 
-    def getParamMap(self):
+    def get_values(self):
         # Send parameters values to Ikomia application
         # Create the specific dict structure (string container)
-        param_map = ParamMap()
+        param_map = {}
         param_map["dataset_folder"] = self.dataset_folder
         return param_map
 
@@ -59,37 +59,37 @@ class DatasetWildreceipt(CWorkflowTask):
     def __init__(self, name, param):
         CWorkflowTask.__init__(self, name)
         # Add input/output of the process here
-        self.addOutput(datasetio.IkDatasetIO("wildreceipt"))
-        self.addOutput(dataprocess.CNumericIO())
+        self.add_output(datasetio.IkDatasetIO("wildreceipt"))
+        self.add_output(dataprocess.CNumericIO())
 
         # Create parameters class
         if param is None:
-            self.setParam(DatasetWildreceiptParam())
+            self.set_param_object(DatasetWildreceiptParam())
         else:
-            self.setParam(copy.deepcopy(param))
+            self.set_param_object(copy.deepcopy(param))
 
-    def getProgressSteps(self, eltCount=1):
+    def get_progress_steps(self, eltCount=1):
         # Function returning the number of progress steps for this process
         # This is handled by the main progress bar of Ikomia application
         return 1
 
     def run(self):
         # Core function of your process
-        # Call beginTaskRun for initialization
-        self.beginTaskRun()
+        # Call begin_task_run for initialization
+        self.begin_task_run()
 
-        param = self.getParam()
+        param = self.get_param_object()
 
         # Get dataset output :
-        output = self.getOutput(0)
+        output = self.get_output(0)
         if os.path.isdir(param.dataset_folder):
             output.data = load_wildreceipt(param.dataset_folder)
 
         # Step progress bar:
-        self.emitStepProgress()
+        self.emit_step_progress()
 
-        # Call endTaskRun to finalize process
-        self.endTaskRun()
+        # Call end_task_run to finalize process
+        self.end_task_run()
 
 
 # --------------------
@@ -102,19 +102,19 @@ class DatasetWildreceiptFactory(dataprocess.CTaskFactory):
         dataprocess.CTaskFactory.__init__(self)
         # Set process information as string here
         self.info.name = "dataset_wildreceipt"
-        self.info.shortDescription = "your short description"
+        self.info.short_description = "your short description"
         self.info.description = "your description"
         # relative path -> as displayed in Ikomia application process tree
         self.info.path = "Plugins/Python"
-        self.info.version = "1.0.0"
-        # self.info.iconPath = "your path to a specific icon"
+        self.info.version = "1.1.0"
+        # self.info.icon_path = "your path to a specific icon"
         self.info.authors = "algorithm author"
         self.info.article = "title of associated research article"
         self.info.journal = "publication journal"
         self.info.year = 2021
         self.info.license = "MIT License"
         # URL of documentation
-        self.info.documentationLink = ""
+        self.info.documentation_link = ""
         # Code source repository
         self.info.repository = ""
         # Keywords used for search
