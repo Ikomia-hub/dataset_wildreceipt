@@ -19,10 +19,10 @@
     </a> 
 </p>
 
-your description
+Load the Wildreceipt dataset format. This plugin converts a Wildreceipt dataset format to Ikomia format.
 
-[Insert illustrative image here. Image must be accessible publicly, in algorithm Github repository for example.
-<img src="images/illustration.png"  alt="Illustrative image" width="30%" height="30%">]
+The Wildereceipt format is specifically designed for receipt OCR (Optical Character Recognition) tasks.
+
 
 ## :rocket: Use with Ikomia API
 
@@ -39,17 +39,21 @@ pip install ikomia
 [Change the sample image URL to fit algorithm purpose]
 
 ```python
-import ikomia
 from ikomia.dataprocess.workflow import Workflow
 
-# Init your workflow
+# Initialize the workflow
 wf = Workflow()
 
-# Add algorithm
+# Add the dataset loader to load your custom data and annotations
 algo = wf.add_task(name="dataset_wildreceipt", auto_connect=True)
 
-# Run on your image  
-wf.run_on(url="example_image.png")
+algo.set_parameters({"dataset_folder":"path/to/dataset/folder"})
+
+# Add the training algorithm
+train = wf.add_task(name= "train_mmlab_text_recognition",  auto_connect=True)
+   
+# Launch your training on your data
+wf.run()
 ```
 
 ## :sunny: Use with Ikomia Studio
@@ -60,58 +64,7 @@ Ikomia Studio offers a friendly UI with the same features as the API.
 
 - For additional guidance on getting started with Ikomia Studio, check out [this blog post](https://www.ikomia.ai/blog/how-to-get-started-with-ikomia-studio).
 
-## :pencil: Set algorithm parameters
-
-[Explain each algorithm parameters]
-
-[Change the sample image URL to fit algorithm purpose]
-
-```python
-import ikomia
-from ikomia.dataprocess.workflow import Workflow
-
-# Init your workflow
-wf = Workflow()
-
-# Add algorithm
-algo = wf.add_task(name="dataset_wildreceipt", auto_connect=True)
-
-algo.set_parameters({
-    "param1": "value1",
-    "param2": "value2",
-    ...
-})
-
-# Run on your image  
-wf.run_on(url="example_image.png")
-
-```
-
-## :mag: Explore algorithm outputs
-
-Every algorithm produces specific outputs, yet they can be explored them the same way using the Ikomia API. For a more in-depth understanding of managing algorithm outputs, please refer to the [documentation](https://ikomia-dev.github.io/python-api-documentation/advanced_guide/IO_management.html).
-
-```python
-import ikomia
-from ikomia.dataprocess.workflow import Workflow
-
-# Init your workflow
-wf = Workflow()
-
-# Add algorithm
-algo = wf.add_task(name="dataset_wildreceipt", auto_connect=True)
-
-# Run on your image  
-wf.run_on(url="example_image.png")
-
-# Iterate over outputs
-for output in algo.get_outputs()
-    # Print information
-    print(output)
-    # Export it to JSON
-    output.to_json()
-```
 
 ## :fast_forward: Advanced usage 
 
-[optional]
+ Check out the [dataset loader guide](https://www.ikomia.ai/blog/using-dataset-loaders-to-train-a-custom-model-with-the-ikomia-api#working-with-wildreceipt-dataset-format) for more information.
