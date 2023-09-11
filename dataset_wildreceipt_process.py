@@ -102,7 +102,7 @@ class DatasetWildreceiptFactory(dataprocess.CTaskFactory):
         dataprocess.CTaskFactory.__init__(self)
         # Set process information as string here
         self.info.name = "dataset_wildreceipt"
-        self.info.short_description = "your short description"
+        self.info.short_description = "Load Wildreceipt dataset"
         self.info.description = "your description"
         # relative path -> as displayed in Ikomia application process tree
         self.info.path = "Plugins/Python"
@@ -118,7 +118,7 @@ class DatasetWildreceiptFactory(dataprocess.CTaskFactory):
         # Code source repository
         self.info.repository = ""
         # Keywords used for search
-        self.info.keywords = "your,keywords,here"
+        self.info.keywords = "Wildreceipt, Dataset, Data Loader"
 
     def create(self, param=None):
         # Create process object
