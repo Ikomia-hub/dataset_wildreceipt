@@ -103,20 +103,19 @@ class DatasetWildreceiptFactory(dataprocess.CTaskFactory):
         # Set process information as string here
         self.info.name = "dataset_wildreceipt"
         self.info.short_description = "Load Wildreceipt dataset"
-        self.info.description = "your description"
         # relative path -> as displayed in Ikomia application process tree
         self.info.path = "Plugins/Python"
         self.info.version = "1.1.0"
         # self.info.icon_path = "your path to a specific icon"
-        self.info.authors = "algorithm author"
-        self.info.article = "title of associated research article"
-        self.info.journal = "publication journal"
+        self.info.authors = "Ikomia team"
+        self.info.article = ""
+        self.info.journal = ""
         self.info.year = 2021
         self.info.license = "MIT License"
         # URL of documentation
         self.info.documentation_link = ""
         # Code source repository
-        self.info.repository = ""
+        self.info.repository = "https://github.com/Ikomia-hub/dataset_wildreceipt"
         # Keywords used for search
         self.info.keywords = "Wildreceipt, Dataset, Data Loader"
 
