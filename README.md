@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Ikomia-hub/infer_detectron2_detection/main/icons.png" alt="Algorithm icon">
+  <img src="https://raw.githubusercontent.com/Ikomia-hub/dataset_wildreceipt/main/icons.png" alt="Algorithm icon">
   <h1 align="center">dataset_wildreceipt</h1>
 </div>
 <br />
