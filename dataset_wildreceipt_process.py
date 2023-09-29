@@ -18,7 +18,7 @@
 
 from ikomia import dataprocess
 from ikomia.core.task import TaskParam
-from ikomia.core import CWorkflowTask
+from ikomia.core import CWorkflowTask, AlgoType
 from ikomia.dnn import datasetio
 import copy
 # Your imports below
@@ -104,7 +104,7 @@ class DatasetWildreceiptFactory(dataprocess.CTaskFactory):
         self.info.name = "dataset_wildreceipt"
         self.info.short_description = "Load Wildreceipt dataset"
         # relative path -> as displayed in Ikomia application process tree
-        self.info.path = "Plugins/Python"
+        self.info.path = "Plugins/Python/Dataset"
         self.info.version = "1.1.0"
         # self.info.icon_path = "your path to a specific icon"
         self.info.authors = "Ikomia team"
@@ -118,6 +118,8 @@ class DatasetWildreceiptFactory(dataprocess.CTaskFactory):
         self.info.repository = "https://github.com/Ikomia-hub/dataset_wildreceipt"
         # Keywords used for search
         self.info.keywords = "Wildreceipt, Dataset, Data Loader"
+        self.info.algo_type = AlgoType.DATASET
+        self.info.algo_tasks = "OBJECT_DETECTION"
 
     def create(self, param=None):
         # Create process object
