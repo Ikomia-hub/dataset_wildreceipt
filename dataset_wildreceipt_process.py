@@ -105,7 +105,7 @@ class DatasetWildreceiptFactory(dataprocess.CTaskFactory):
         self.info.short_description = "Load Wildreceipt dataset"
         # relative path -> as displayed in Ikomia application process tree
         self.info.path = "Plugins/Python/Dataset"
-        self.info.version = "1.1.0"
+        self.info.version = "1.1.1"
         # self.info.icon_path = "your path to a specific icon"
         self.info.authors = "Ikomia team"
         self.info.article = ""

@@ -19,7 +19,7 @@
     </a> 
 </p>
 
-Load the Wildreceipt dataset format. This plugin converts a Wildreceipt dataset format to Ikomia format.
+Load the Wildreceipt dataset format. This plugin converts a Wildreceipt dataset format to Ikomia format. You can download WildReceipt dataset [here](https://download.openmmlab.com/mmocr/data/wildreceipt.tar).
 
 The Wildereceipt format is specifically designed for receipt OCR (Optical Character Recognition) tasks.
 
@@ -36,7 +36,6 @@ pip install ikomia
 
 #### 2. Create your workflow
 
-[Change the sample image URL to fit algorithm purpose]
 
 ```python
 from ikomia.dataprocess.workflow import Workflow
